@@ -1,0 +1,46 @@
+<div class="stock"
+     [ngClass]="{'stock--disabled': !activeIds.includes(stock.id), 'stock--negative': stock.difference < 0, 'stock--positive': stock.difference > 0}">
+  <div class="stock__name">{{stock.name}}</div>
+  <div class="stock__price">
+    <span class="stock__price--current">
+      ${{stock.currentPrice}}
+    </span>
+  </div>
+
+<!--  <div class="stock__price" *ngIf="stock.difference">-->
+<!--    <span>-->
+<!--      <ng-container *ngIf="stock.difference > 0">+</ng-container>-->
+<!--      {{stock.difference}}-->
+<!--    </span>-->
+<!--    <span>({{stock.difference ? '+' : '-'}}{{stock.percentage}}%)</span>-->
+<!--  </div>-->
+
+  <div class="stock__price">
+    <span>Daily High:</span>
+    <span>${{stock.dailyHigh}}</span>
+  </div>
+
+  <div class="stock__price">
+    <span>Daily Low:</span>
+    <span>${{stock.dailyLow}}</span>
+  </div>
+
+  <div class="stock__price stock__price--yearly">
+    <span>52 week high price:</span>
+    <span>${{stock.yearlyHigh}}</span>
+  </div>
+
+  <div class="stock__price stock__price--yearly">
+    <span>52 week low price:</span>
+    <span>${{stock.yearlyLow}}</span>
+  </div>
+
+  <div class="stock__toggle">
+    <label class="switch">
+      <input type="checkbox"
+             [checked]="activeIds.includes(stock.id)"
+             (change)="toggle($event)">
+      <span class="slider round"></span>
+    </label>
+  </div>
+</div>
